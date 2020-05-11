@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- /api/solr webscript returning the min txId in a nodeId range -->
+	<bean id="webscript.org.alfresco.repository.solr.nextTransactionCommitTime.get"
+		class="org.alfresco.repo.web.scripts.solr.NextTransactionGet"
+		parent="webscript">
+		<property name="nodeDAO" ref="extendedNodeDAO" />
+	</bean>
+
+	<!-- Extension from Alfresco default NodeDAO -->
+	<bean id="customSqlSessionFactory" class="org.alfresco.ibatis.HierarchicalSqlSessionFactoryBean">
+		<property name="resourceLoader" ref="dialectResourceLoader" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:alfresco/module/alfresco-search-2028-module/ibatis/sqlmap-config.xml" />
+	</bean>
+
+	<bean id="customSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="customSqlSessionFactory" />
+	</bean>
+
+	<bean id="extendedNodeDAO" class="org.alfresco.repo.domain.node.ibatis.ExtendedNodeDAOImpl">
+		<property name="sqlSessionTemplate" ref="customSqlSessionTemplate" />
+	</bean>
+
+</beans>
