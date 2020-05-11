@@ -14,7 +14,7 @@ This feature, on the Repository part, includes a new database query and a new We
 
 ## Installing the module
 
-Copy [alfresco-search-2028-module-1.0.0.jar]() to your deployment folder by using default [Simple Module instructions](https://docs.alfresco.com/community/concepts/dev-extensions-packaging-techniques-jar-files.html). It's just only required to copy this JAR to `alfresco/WEB-INF/lib` folder.
+Copy [alfresco-search-2028-module-1.0.0.jar](https://github.com/aborroy/alfresco-search-2028-module/releases/download/1.0.0/alfresco-search-2028-module-1.0.0.jar) to your deployment folder by using default [Simple Module instructions](https://docs.alfresco.com/community/concepts/dev-extensions-packaging-techniques-jar-files.html). It's just only required to copy this JAR to `alfresco/WEB-INF/lib` folder.
 
 ## Verifying the module
 
